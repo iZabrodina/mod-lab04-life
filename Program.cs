@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -161,7 +161,7 @@ namespace cli_life
             foreach (char c in buf)
             {
                 j += 1;
-                if ((j == 50) && (i == 19)) // Если достигнут правый нижний угол доски (конец)
+                if ((j == 50) && (i == 19)) 
                 {
                     break;
                 }
@@ -230,20 +230,100 @@ namespace cli_life
                 Console.Write('\n');
             }
         }
+
         static void Main(string[] args)
         {
+            int schet = 0;
             Configuration configuration = new Configuration();
             configuration.LoadConfig("C:\\Programms\\GameLife\\Configuration.json");
             Reset(configuration);
-            configuration.LoadState(board, "C:\\Programms\\GameLife\\save.txt");
-            while (true)
+            configuration.LoadState(board, "C:\\Programms\\GameLife\\board.txt");
+            while ((true) && (schet < 10))
             {
+                schet++;
                 Console.Clear();
                 Render();
-                configuration.SaveState(board, "C:\\Programms\\GameLife\\save.txt");
+                configuration.SaveState(board, "C:\\Programms\\GameLife\\board.txt");
                 board.Advance();
                 Thread.Sleep(1000);
             }
+do{ 
+            Console.WriteLine("Выберите номер теста: 1 - Мигалки, 2 - Ящик, 3 - Улей, 4 - Каравай, 5 - Корабль");
+            int choice = 0;
+            while (choice != 1 && choice != 2 && choice != 3 && choice != 4 && choice != 5)
+            {
+                choice = int.Parse(Console.ReadLine());
+            }
+            switch (choice)
+            {
+                case 1:
+                    schet = 0;
+                    configuration.LoadState(board, "C:\\Programms\\GameLife\\Tests\\test1.txt");
+                    while ((true) && (schet < 5))
+                    {
+                        schet++;
+                        Console.Clear();
+                        Render();
+                        configuration.SaveState(board, "C:\\Programms\\GameLife\\Tests\\test1.txt");
+                        board.Advance();
+                        Thread.Sleep(1000);
+                    }
+                    break;
+                case 2:
+                    schet = 0;
+                    configuration.LoadState(board, "C:\\Programms\\GameLife\\Tests\\test2.txt");
+                    while ((true) && (schet < 5))
+                    {
+                        schet++;
+                        Console.Clear();
+                        Render();
+                        configuration.SaveState(board, "C:\\Programms\\GameLife\\Tests\\test2.txt");
+                        board.Advance();
+                        Thread.Sleep(1000);
+                    }
+                    break;
+                case 3:
+                    schet = 0;
+                    configuration.LoadState(board, "C:\\Programms\\GameLife\\Tests\\test3.txt");
+                    while ((true) && (schet < 5))
+                    {
+                        schet++;
+                        Console.Clear();
+                        Render();
+                        configuration.SaveState(board, "C:\\Programms\\GameLife\\Tests\\test3.txt");
+                        board.Advance();
+                        Thread.Sleep(1000);
+                    }
+                    break;
+                case 4:
+                    schet = 0;
+                    configuration.LoadState(board, "C:\\Programms\\GameLife\\Tests\\test4.txt");
+                    while ((true) && (schet < 5))
+                    {
+                        schet++;
+                        Console.Clear();
+                        Render();
+                        configuration.SaveState(board, "C:\\Programms\\GameLife\\Tests\\test4.txt");
+                        board.Advance();
+                        Thread.Sleep(1000);
+                    }
+                    break;
+                case 5:
+                    schet = 0;
+                    configuration.LoadState(board, "C:\\Programms\\GameLife\\Tests\\test5.txt");
+                    while ((true) && (schet < 5))
+                    {
+                        schet++;
+                        Console.Clear();
+                        Render();
+                        configuration.SaveState(board, "C:\\Programms\\GameLife\\Tests\\test5.txt");
+                        board.Advance();
+                        Thread.Sleep(1000);
+                    }
+                    break;
+            }
+}while(true);
+
         }
     }
 }
